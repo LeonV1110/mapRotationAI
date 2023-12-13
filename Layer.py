@@ -20,7 +20,7 @@ class Faction(Enum):
     VDV     = "18", Alliance.Red
     
     MEA     = "19", Alliance.Green
-    TGF     = "20", Alliance.Green # kalkoen faction
+    TLF     = "20", Alliance.Green # kalkoen faction
     
     INS     = "21", Alliance.Brown
     IMF     = "22", Alliance.Brown
