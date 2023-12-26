@@ -6,9 +6,10 @@ class Weather(Enum):
     Rainy = 2
     Stormy = 3
 
-class Foggyness(Enum):
-    Clear = 0
-    Fog = 1 # Also counts for sandstorm
+class Visibility(Enum): #fog, sandstorms, ect...
+    Low = 0
+    Medium = 1
+    High = 2
 
 class Time(Enum):
     Morning = 0
@@ -17,6 +18,15 @@ class Time(Enum):
     Evening = 3
     Night = 4
 
+class Lighting:
+    weather : Weather
+    visibility: Visibility
+    time: Time
+    
+    def __init__(self, weather, visibility, time) -> None:
+        self.weather = weather
+        self.visibility = visibility
+        self.time = time
 
-class Lighting(Enum):
-    pass
+    def __eq__(self, other):
+        return (self.weather, self.visibility, self.time) == (other.weather, other.visibility, other.time)

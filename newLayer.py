@@ -11,8 +11,25 @@ class Layer:
 
     gamemode: Gamemode
     size: Size
+    lighting: Lighting
     vehicles: Vehicles
 
     map: SquadMap
-    lighting: Lighting
+    layer: int
 
+    def __init__(self, f1, f1t, f2, f2t, gm, s, v, m ,l) -> None:
+        self.faction1 = f1
+        self.faction1Tickets = f1t
+        self.faction2 = f2
+        self.faction2Tickets = f2t
+
+        self.gamemode = gm
+        self.size = s
+        self.vehicles = v
+        self.map = m
+        self.lighting = l
+
+        
+
+    def __eq__(self, other) -> bool:
+        return (self.map, self.layer) == (other.map, other.layer)
