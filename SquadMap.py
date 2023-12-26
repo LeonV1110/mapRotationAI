@@ -1,61 +1,63 @@
 from enum import Enum
+
+class Waterness(Enum):
+    LandLocked = 0
+    Coast = 1
+    Delta = 2
+    Island = 3
+
 class Biome(Enum):
-    Desert  = "1"
-    Green   = "2"
-    Snow    = "3"
-    Arid    = "4"
-    Island  = "5"
+    Snow = 0
+    Green = 1
+    Arid = 2
+    Dessert = 3
 
-class Environment(Enum):
-    Open        = "1"
-    Urban       = "2"
-    Canyon      = "3"
-    Field       = "4"
-    Mountain    = "5"
-    Forest      = "6"
-    Jungle      = "7"
-    
+class Urbanness(Enum):
+    Wild = 0
+    Rural = 1
+    Suburb = 2 # Not full town, but big town part
+    Urban = 3
+    DownTown = 4
+
+class Forestness(Enum):
+    Field = 0
+    SparceForest = 1
+    Forest = 2
+    DenseForest = 3
+    Jungle = 4
+
+class Mountainness(Enum):
+    Flat = 0 #NL
+    Hilly = 1
+    BigHill = 2
+    Mountain = 3
+
+
+
 class SquadMap(Enum):
-    AlBasrah                = "10", Biome.Desert, Environment.Urban
-    Anvil                   = "11", Biome.Desert, Environment.Canyon 
-    Belaya                  = "12", Biome.Snow, Environment.Forest
-    BlackCoast              = "13", Biome.Green, Environment.Forest
-    Chora                   = "14", Biome.Desert, Environment.Field
-    Fallujah                = "15", Biome.Desert, Environment.Urban
-    FoolsRoad               = "16", Biome.Green, Environment.Forest
-    GooseBay                = "17", Biome.Snow, Environment.Forest
-    Gorodok                 = "18", Biome.Green, Environment.Forest
-    Harju                   = "19", Biome.Green, Environment.Forest
-    JensensRange            = "10", Biome.Desert, Environment.Open
-    Kamdesh                 = "21", Biome.Arid, Environment.Forest
-    Kohat                   = "22", Biome.Desert, Environment.Mountain
-    Kokan                   = "23", Biome.Desert, Environment.Field
-    Lashkar                 = "24", Biome.Arid, Environment.Mountain
-    Logar                   = "25", Biome.Desert, Environment.Urban
-    Manicouagan             = "26", Biome.Green, Environment.Mountain
-    Mestia                  = "27", Biome.Green, Environment.Mountain
-    Mutaha                  = "28", Biome.Desert, Environment.Urban
-    Narva                   = "29", Biome.Green, Environment.Urban
-    PacificProvingGrounds   = "30", Biome.Island, Environment.Jungle
-    Sanxian                 = "31", Biome.Island, Environment.Jungle
-    Skorpo                  = "32", Biome.Green, Environment.Mountain
-    Sumari                  = "33", Biome.Desert, Environment.Urban
-    Tallil                  = "34", Biome.Desert, Environment.Open
-    Yehorivka               = "35", Biome.Green, Environment.Forest
-
-    def getNum(self):
-        return self.value[0]
-
-    def getBiome(self):
-        return self.value[1]
-    
-    def getEnvironment(self):
-        return self.value[2]
-    
-    def getMapcode(self) -> str:
-        return self.getNum() + self.getBiome().value + self.getEnvironment().value
-
-def test():
-    print(SquadMap.AlBasrah.getBiome())
-    print(SquadMap.AlBasrah.getMapcode())
-    print(SquadMap.Yehorivka.getMapcode())
+    AlBasrah                = 0     , Waterness.LandLocked  , Biome.Dessert , Urbanness.Suburb  , Forestness.Field          , Mountainness.Flat
+    Anvil                   = 1     , Waterness.LandLocked  , Biome.Dessert , Urbanness.Rural   , Forestness.Field          , Mountainness.Mountain
+    Belaya                  = 2     , Waterness.LandLocked  , Biome.Snow    , Urbanness.Rural   , Forestness.Forest         , Mountainness.Hilly
+    BlackCoast              = 3     , Waterness.Delta       , Biome.Green   , Urbanness.Rural   , Forestness.Forest         , Mountainness.BigHill
+    Chora                   = 4     , Waterness.LandLocked  , Biome.Dessert , Urbanness.Rural   , Forestness.Field          , Mountainness.Flat
+    Fallujah                = 5     , Waterness.LandLocked  , Biome.Dessert , Urbanness.DownTown, Forestness.Field          , Mountainness.Flat
+    FoolsRoad               = 6     , Waterness.LandLocked  , Biome.Green   , Urbanness.Wild    , Forestness.DenseForest    , Mountainness.BigHill
+    GooseBay                = 7     , Waterness.Coast       , Biome.Snow    , Urbanness.Rural   , Forestness.DenseForest    , Mountainness.BigHill
+    Gorodok                 = 8     , Waterness.LandLocked  , Biome.Green   , Urbanness.Rural   , Forestness.SparceForest   , Mountainness.Hilly
+    Harju                   = 9     , Waterness.Delta       , Biome.Green   , Urbanness.Suburb  , Forestness.DenseForest    , Mountainness.BigHill
+    JensensRange            = 10    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Wild    , Forestness.Field          , Mountainness.Flat
+    Kamdesh                 = 11    , Waterness.LandLocked  , Biome.Arid    , Urbanness.Rural   , Forestness.Forest         , Mountainness.Hilly
+    Kohat                   = 12    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Rural   , Forestness.Field          , Mountainness.Mountain
+    Kokan                   = 13    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Rural   , Forestness.Field          , Mountainness.Flat
+    Lashkar                 = 14    , Waterness.LandLocked  , Biome.Arid    , Urbanness.Rural   , Forestness.DenseForest    , Mountainness.Mountain
+    Logar                   = 15    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Suburb  , Forestness.SparceForest   , Mountainness.BigHill
+    Manicouagan             = 16    , Waterness.LandLocked  , Biome.Green   , Urbanness.Rural   , Forestness.DenseForest    , Mountainness.Mountain
+    Mestia                  = 17    , Waterness.LandLocked  , Biome.Green   , Urbanness.Rural   , Forestness.Forest         , Mountainness.BigHill
+    Mutaha                  = 18    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Urban   , Forestness.Field          , Mountainness.Flat
+    Narva                   = 19    , Waterness.LandLocked  , Biome.Green   , Urbanness.DownTown, Forestness.Field          , Mountainness.Flat
+    PacificProvingGrounds   = 20    , Waterness.Island      , Biome.Green   , Urbanness.Wild    , Forestness.Jungle         , Mountainness.Hilly
+    Sanxian                 = 21    , Waterness.Island      , Biome.Green   , Urbanness.Rural   , Forestness.Jungle         , Mountainness.Hilly #NOT RELEASED YET
+    Skorpo                  = 22    , Waterness.Delta       , Biome.Green   , Urbanness.Rural   , Forestness.DenseForest    , Mountainness.Mountain
+    Sumari                  = 23    , Waterness.LandLocked  , Biome.Dessert , Urbanness.DownTown, Forestness.Field          , Mountainness.Flat
+    Tallil                  = 24    , Waterness.LandLocked  , Biome.Dessert , Urbanness.Rural   , Forestness.Field          , Mountainness.Flat
+    Yehorivka               = 25    , Waterness.LandLocked  , Biome.Green   , Urbanness.Suburb  , Forestness.SparceForest   , Mountainness.BigHill
